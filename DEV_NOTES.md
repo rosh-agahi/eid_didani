@@ -93,3 +93,12 @@ Appointment/visits
       2.     <strong> register Sinatra::ActiveRecordExtension </strong>
 
 2. create user model (model/user.rb)
+3. create user controller (controllers/users_controller.rb)
+  * make a sample get request with "Hello"
+  * mount controller on config.ru
+    * use UsersController
+4. create new user registration form (views/users/new.html.erb)
+  * get and post methods with save in users_controller
+  * updated user model with has_secure_password
+
+_commit_
