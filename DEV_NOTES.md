@@ -16,12 +16,43 @@
 Plan Application:
 
 User (aka familymember)
-  has one household
-  has many families
+  belongs to one household
+  belongs to many families through household
   authenitication
   email/password
   unique emails
+  /register
+  /login
+  /logout
+  /home => index of family groups the user is a part of
+  /home/settings => see/manage user info
+  /household/1/schedule => see list of booked visits for the user's household
+
 
 Household
   has many familymembers (users)
-  url for viewing appointments 
+  belongs to many family groups
+  has many appointments
+  has many visits
+  url for viewing appointments
+  /households => do not want a user to be able to see an index of all households. #forbidden
+  /household/id/invite => invite a user to join a household
+  /household/id/calendar => see list of available appointments for the selected household.
+
+Family
+  has many households
+  has many users through households
+  attributes
+    * needs unique identifier
+    * array of households
+    
+  /family/ => shows index of all households in a family group
+    * select a household to see their availabilities
+
+Appointment/visits
+  belongs to up to 4 households (1 hosting, 3 attending)
+  attributes: hosting household, location, attending households, date, timeslot, status (available/(booked/not home))
+    * status:
+      * if hosting and 3 hshlds attending: booked
+      * if hosting and <3 hshlds attending: available
+      * if not hosting but attending elsewhere: not home
