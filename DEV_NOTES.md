@@ -102,3 +102,15 @@ Appointment/visits
   * updated user model with has_secure_password
 
 _commit_
+
+5. Login functionality needs sessions enabled
+  * in controllers/application_controller.rb add "enable :sessions" as line 3
+  * add following lines to users_controller
+          get '/login' do
+            erb :'users/login.html'
+          end
+
+          post '/login' do
+            redirect '/'
+          end
+  * 
