@@ -1,5 +1,6 @@
 class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
+  # use Rack::Flash
 
   configure do
     enable :sessions
@@ -11,6 +12,24 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
     erb :welcome
+  end
+
+  helpers do # sinatra helpers are methods accessible to all views and controllers of the application (aka shared backend functionality)
+    def logged_in?
+      !!current_user # hardens the true or false value return of current_user
+    end
+
+    def current_user
+      @user ||= User.find(session[:user_id]) if session[:user_id]
+      # right side: if @user is not populated, if there is a session id, find the matching user id and assign it to @user.
+    end
+
+    def authentication_required
+      if !logged_in?
+        # flash[:notice] = "You must be logged in."
+        redirect '/'
+      end
+    end
   end
 
 end
