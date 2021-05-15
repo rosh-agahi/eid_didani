@@ -5,5 +5,9 @@ if ActiveRecord::Base.connection.migration_context.needs_migration?
 end
 
 use UsersController
+use HouseholdsController
+# use AvailabilitiesController
+# use FamiliesController
+# use AppointmentsController
 
 run ApplicationController

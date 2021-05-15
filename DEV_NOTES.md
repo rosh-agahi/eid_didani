@@ -140,13 +140,19 @@ id
 name            string
 address         string
 admin_id        integer = current user id
-availabilities  datetime [array of (datetime and status)]
+///availabilities  datetime [array of (datetime and status)] -- nope. availabilities will be own class
   ** user makes request for appointments with other households (this request will also look up their availabilities and if the same datetime doesn't exist, it will add and set status to booked, if it exists it will set status to booked. if the other household declines, it will revert status to available, otherwise it will not change.)
 
-[Membership joins table] /see below/
-household : user table ==> manages which users belong to which households
 household id /one to many relationship/
 user id /rule = one household per user/
+
+1. create migration for household
+2. create migration to add name and household id to users
+3. created Household model and HouseholdsController
+  has many users
+  will: has many availabilities * going to need to add that as another class
+    availability is a boolean for each datetime. more on that later.
+
 
 /** from stackoverflow: */-------------------------------------------
 class Group < ActiveRecord::Base
@@ -193,13 +199,7 @@ Household has many users with an admin attribute matching a user_id
 User belongs to household (belongs to family through households?)
 ***** this is not a many to many relationship so I think the more simple version is ok.
 
-SPRINT 3: FAMILY GROUPS
-family : household
-many to many relationship.
-this is where I'm going to need the membership joins table.
-
-
-SPRINT 4: APPOINTMENTS
+SPRINT 3: Availabilities and APPOINTMENTS
 
 appointment table ==> manages all household appointments
 id
@@ -207,3 +207,8 @@ visiting(REQUESTING) household id     integer
 hosting household id                  integer
 datetime                              datetime
 address                               string (inherits from hosting household)
+
+SPRINT 4: FAMILY GROUPS
+family : household
+many to many relationship.
+this is where I'm going to need the membership joins table.
