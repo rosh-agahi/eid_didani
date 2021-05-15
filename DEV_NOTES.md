@@ -113,4 +113,97 @@ _commit_
           post '/login' do
             redirect '/'
           end
-  * 
+  *
+
+---SPRINT 2: SETTING UP HOUSEHOLD---
+Household is created by a user.
+A user can belong to only one household at a time.
+Multiple users can belong to one household.
+A Household can belong to multiple Family Groups
+A household has appointments
+
+--> user creates household --> [user that creates the household is auto set as admin. only the admin user can modify household members and transfer admin power. once admin power is transferred you can't keep acting as admin]
+--> user adds other users to their household
+--> user can give /admin/ rights to another user in that household (admin rights is like who created it and manages household members - so maybe the household is owned by the admin user)
+      use case: a daughter sets up the household for her family, but then she moves out of the house and has to set up a new household because she got married etc so now her dad is the admin of the original household.
+
+- create household (with address) (automatically join household as admin)
+- set appointment availabilities (datetime)
+- request appointments with other households (includes datetime)
+[as admin]
+  - add/remove household member
+  - change household address
+  - give away admin access
+
+household table:
+id
+name            string
+address         string
+admin_id        integer = current user id
+availabilities  datetime [array of (datetime and status)]
+  ** user makes request for appointments with other households (this request will also look up their availabilities and if the same datetime doesn't exist, it will add and set status to booked, if it exists it will set status to booked. if the other household declines, it will revert status to available, otherwise it will not change.)
+
+[Membership joins table] /see below/
+household : user table ==> manages which users belong to which households
+household id /one to many relationship/
+user id /rule = one household per user/
+
+/** from stackoverflow: */-------------------------------------------
+class Group < ActiveRecord::Base
+  has_many :memberships
+  has_many :users, through: :memberships
+  attr_accessible :name, :description, :isPublic, :tag_list, :owner
+end
+
+class Membership < ActiveRecord::Base
+  belongs_to :group
+  belongs_to :user
+
+  #this table has a flag called owner and thus a method called owner?
+end
+
+class User < ActiveRecord::Base
+  has_many :memberships
+  has_many :groups, through: :memberships
+  attr_accessible :name, :description, :owner_id
+end
+----------------------------------------------------------------------
+/** modified for here: */---------------------------------------------
+class Household < ActiveRecord::Base
+  has_many :memberships
+  has_many :users, through: :memberships
+  attr_accessible :name, :address, :isPublic /ooo this is interesting/, :admin
+end
+
+class Membership < ActiveRecord::Base
+  belongs_to :household
+  belongs_to :user
+
+  #this table has a flag called owner and thus a method called owner?
+end
+
+class User < ActiveRecord::Base
+  has_one?*is that possible? :memberships
+  has_many :groups, through: :memberships ?same question here?
+  attr_accessible :name
+end
+----------------------------------------------------------------------
+or do I just do:
+Household has many users with an admin attribute matching a user_id
+User belongs to household (belongs to family through households?)
+***** this is not a many to many relationship so I think the more simple version is ok.
+
+SPRINT 3: FAMILY GROUPS
+family : household
+many to many relationship.
+this is where I'm going to need the membership joins table.
+
+
+SPRINT 4: APPOINTMENTS
+
+appointment table ==> manages all household appointments
+id
+visiting(REQUESTING) household id     integer
+hosting household id                  integer
+datetime                              datetime
+address                               string (inherits from hosting household)
