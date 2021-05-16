@@ -1,24 +1,12 @@
 <%= session[:user_id] %>
 
 <div class="container">
-  <header>
-  </header>
-  <div class="col-md-8 col-md-offset-2">
-    <div class="container" align="right">
-      <nav>
-        <% if logged_in? %>
-        Logged in as: <%= current_user.email %> | <a href="/logout">Logout</a>
-        <% else %>
-        <a href="/register">Register</a> | <a href="/login">Login</a> | <a href="/">Home</a>
-        <% end %>
-      </nav>
 
-    </div>
-    <div class="holder" align="left">
+  <div class="col-md-8 col-md-offset-2">
+
+    <div class="holder" align="center">
       <img src="https://ctl.s6img.com/society6/img/mLupAioJ65Fyr5vjFoA6CpSltSk/w_700/prints/~artwork/s6-original-art-uploads/society6/uploads/misc/c851c9ef6d0c4fd4b2af171730d5f9d8/~~/happy-nowruz-iranian-new-year-prints.jpg" class="img-responsive main-image">
     <div>
-
-    <h1 align="left">Eid Didani!</h1>
 
     <div align="left" class="content">
       <p>This is an app designed to help organize Persian Nowruz Eid Didanis!

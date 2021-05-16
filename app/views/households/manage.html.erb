@@ -1,0 +1,31 @@
+<h2 align="left"> <%= @household.name %></h2>
+
+ <h3>Admin: <%= current_user.name %></h3>
+
+<p>button to go to appointment calendar</p>
+<p>button to delete household</p>
+<p>button to change address</p>
+
+<p>column 1</p>
+<h3>Manage Availabilities</h3>
+<ul>
+  <% @availabilities.each do |a| %>
+  <li><%= "Date: #{a.available_date} Status: #{a.available_status}" %></li>
+  <% end %>
+</ul>
+
+<p>form: add availability <br>
+inputs: date, time, timezone (defaults to current time zone)</p>
+
+<p>column 2</p>
+<h3>Manage Users</h3>
+<p>also want to delete each user with a button next to their name, right aligned</p>
+<ul>
+  <% @users.each do |user| %>
+  <li><%= user.name %></li>
+  <% end %>
+</ul>
+
+<p>form: add user, input: email address<br>
+error message if user not exist<br>
+button to add user</p>

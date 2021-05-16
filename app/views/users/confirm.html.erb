@@ -1,0 +1,14 @@
+<h2>Confirmation: Join Your Household</h2>
+<p>Please confirm that you would like to join the household you just created.</p>
+
+<h3>Household Name</h3>
+<p><%= @household.name %></p>
+
+<h3> Household Address</h3>
+<p><%= @household.address %></p>
+
+<form action="/confirm/<%= @user.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input type="hidden" name="household_id" value="<%= @household.id %>">
+  <input type="submit" value="Confirm & Join" />
+</form>

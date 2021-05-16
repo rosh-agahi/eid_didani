@@ -1,0 +1,16 @@
+<h2><%=@user.name %></h2>
+<h3>User ID #</h3>
+<p><%= @user.id %></p>
+
+<h3>Email Address </h3>
+<p><%= @user.email %></p>
+
+<h3>Password </h3>
+<p>won't show the password. duh.</p>
+
+<h3>Household</h3>
+<% if @user.household_id == nil %>
+<p>Not part of a household yet.</p>
+<% else %>
+<a href="/households/<%= @user.household.id %>"><%= @user.household.name %></p>
+<% end %>

@@ -152,7 +152,22 @@ user id /rule = one household per user/
   has many users
   will: has many availabilities * going to need to add that as another class
     availability is a boolean for each datetime. more on that later.
+4. mounted the HouseholdsController
+5. created associations using belongs_to and has_many between users, households, and availabilities
 
+Household Routes
+/households ==X should not be able to see an index of all households. and only one household per user so don't need to see a list of households the user belongs to.
+
+/household ==> allows admin user to manage household
+    add other users to household by email address
+    transfer admin rights to another user
+    see availabilities & status (and delete them from there)
+    link to go to booked visits
+
+/households/new ==> form to create a new household, sets current user as household admin. 
+
+
+other notes:------------------------------------------------------------------------------
 
 /** from stackoverflow: */-------------------------------------------
 class Group < ActiveRecord::Base
@@ -191,7 +206,6 @@ end
 class User < ActiveRecord::Base
   has_one?*is that possible? :memberships
   has_many :groups, through: :memberships ?same question here?
-  attr_accessible :name
 end
 ----------------------------------------------------------------------
 or do I just do:

@@ -1,0 +1,11 @@
+<h1><%= @household.name %></h1>
+
+<% if @availabilities.count < 1 %>
+  <p>This household has not yet set up any available times. Please check back soon.</p>
+<% else %>
+  <ul>
+    <% @availabilities.each do |a| %>
+    <li><%= "Date: #{a.available_date} Status: #{a.available_status}" %></li>
+    <% end %>
+  </ul>
+<% end %>

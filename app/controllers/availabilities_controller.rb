@@ -1,5 +1,3 @@
-class UsersController < ApplicationController
-
-
+class AvailabilitiesController < ApplicationController
 
 end

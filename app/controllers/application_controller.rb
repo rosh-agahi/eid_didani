@@ -1,6 +1,9 @@
+require 'rack-flash'
+
 class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
-  # use Rack::Flash
+
+  use Rack::Flash
 
   configure do
     enable :sessions
@@ -24,10 +27,22 @@ class ApplicationController < Sinatra::Base
       # right side: if @user is not populated, if there is a session id, find the matching user id and assign it to @user.
     end
 
+    def is_admin? #checks if the current_user is admin for the household. required for manage household.
+      current_user.id == current_user.household.admin_id
+    end
+
     def authentication_required
       if !logged_in?
-        # flash[:notice] = "You must be logged in."
+        flash[:notice] = "You must be logged in."
+        redirect '/login'
+      end
+    end
+
+    def admin_authication
+      if !is_admin?
+        flash[:notice] = "You are not the admin for your household. Please contact your household admin."
         redirect '/'
+        
       end
     end
   end

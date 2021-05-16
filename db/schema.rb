@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_15_205402) do
+ActiveRecord::Schema.define(version: 2021_05_16_004315) do
 
-  create_table "availabilites", force: :cascade do |t|
+  create_table "availabilities", force: :cascade do |t|
     t.integer "household_id"
     t.datetime "available_date"
     t.boolean "available_status"

@@ -6,7 +6,7 @@ end
 
 use UsersController
 use HouseholdsController
-# use AvailabilitiesController
+use AvailabilitiesController
 # use FamiliesController
 # use AppointmentsController
 
