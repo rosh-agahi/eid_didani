@@ -11,6 +11,12 @@
     width: 100%;
   }
 
+  .status {
+    display: inline;
+    color: green;
+    font-style: italic;
+  }
+
   #menu_bar {
     width: 100%
     display: flex;

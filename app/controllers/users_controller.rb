@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       if @user.household_id == nil
         redirect "/households/new"
       elsif @user.household.admin_id == @user.id
-        redirect "/household/:id/manage"
+        redirect "/households/#{@user.household.id}/manage"
       else
         redirect "/"
       end

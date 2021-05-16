@@ -42,9 +42,14 @@ class ApplicationController < Sinatra::Base
       if !is_admin?
         flash[:notice] = "You are not the admin for your household. Please contact your household admin."
         redirect '/'
-        
+
       end
     end
+
+    def display_availability(date_time)
+      "#{date_time.strftime("%A %m/%d/%Y %I:%M")} #{date_time.strftime("%H").to_i > 12 ? ('PM') : ('AM')}"
+    end
+
   end
 
 end

@@ -19,6 +19,7 @@ class HouseholdsController < ApplicationController
     end
   end
 
+
   get '/households/:id' do
     @household = Household.find_by_id(params[:id])
     @availabilities = @household.availabilities
@@ -42,6 +43,8 @@ class HouseholdsController < ApplicationController
     end
 
   end
+
+
 
 
 end

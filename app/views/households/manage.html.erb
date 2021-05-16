@@ -8,11 +8,21 @@
 
 <p>column 1</p>
 <h3>Manage Availabilities</h3>
-<ul>
-  <% @availabilities.each do |a| %>
-  <li><%= "Date: #{a.available_date} Status: #{a.available_status}" %></li>
-  <% end %>
-</ul>
+<% if @availabilities.count < 1 %>
+  <p>Start by adding availabilities</p>
+<% else %>
+  <ul>
+    <% @availabilities.each do |a| %>
+    <li>
+      <form action="/availabilities/<%= a.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete">
+        <%= "#{display_availability(a.available_date)}  " %><p class="status"><%= a.available_status ? ("Available"):("Booked") %></p></li>
+      </form>
+    <% end %>
+  </ul>
+<% end %>
+
 
 <p>form: add availability <br>
 inputs: date, time, timezone (defaults to current time zone)</p>
