@@ -1,0 +1,9 @@
+<h2>Add this user to your household?</h2>
+
+<h3><%= @otheruser.name %></h3>
+
+<form action="/confirm_add/<%= @otheruser.id %>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input type="text" name="household_id" value="<%= current_user.household_id %>">
+  <input type="submit" value="Confirm">
+</form>

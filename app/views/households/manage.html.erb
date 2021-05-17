@@ -16,8 +16,8 @@
       <form action="/availabilities/<%= a.id %>" method="post">
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete">
-        <%= "#{display_availability(a.available_date)}  " %><p class="status"><%= a.available_status ? ("Available"):("Booked") %></p></li>
-      </form>
+        <%= "#{display_availability(a.available_date)}  " %><p class="status"><%= a.available_status ? ("Available"):("Booked") %></p>
+      </form></li>
     <% end %>
   </ul>
 <% end %>
@@ -28,20 +28,27 @@
     <input type="submit" value="Add" />
 </form>
 <br>
+
+
+
+
 <h3>Household Members</h3>
-<p>also want to delete each user with a button next to their name, right aligned</p>
 <ul>
-  <% @users.each do |user| %>
-  <li><%= user.name %></li>
+  <% @users.each do |u| %>
+  <li>
+    <form action:"/user/remove/<%= u.id %>" method="post">
+      <input type="hidden" name="_method" value="PATCH">
+      <input type="hidden" name="household_id" value="nil">
+      <input type="submit" value="Remove">
+      <%= u.name %>
+</form></li>
   <% end %>
 </ul>
-
+<br>
+<%= "<div class='notice'> #{flash[:notice]}</div>" if flash[:notice] %>
 <br>
 <p> Add more household members </p>
-<form action="/adduser/<%=  %>" method="post">
-  <input id="hidden" type="hidden" name="_method" value="patch">
-  <input type="text" name="email">
-  <input type="hidden" name="household_id" value="<%= @household.id %>">
-  <input type="submit" value="Add Household Member" />
+<form action="/households/<%= current_user.household_id %>/manage" method="post">
+  <input type="text" name="email"><br>
+  <input type="submit" value="Find User" /><%= "<div class='notice'> #{flash[:notice2]}</div>" if flash[:notice2] %>
 </form>
-<%= "<div class='notice'> #{flash[:notice]}</div>" if flash[:notice] %>

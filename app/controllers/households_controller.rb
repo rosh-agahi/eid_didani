@@ -7,6 +7,29 @@ class HouseholdsController < ApplicationController
     erb :"households/new.html"
   end
 
+  # get '/households/:id/manage/:id2' do
+  #   @household = Household.find_by_id(params[:id])
+  #   @users = @household.users
+  #   @availabilities = @household.availabilities
+  #   @otheruser = User.find_by_id(params[:id2])
+  #
+  #   erb :"households/manage.html"
+  # end
+
+  post '/households/:id/manage' do
+    if !!@otheruser = User.find_by(email: params[:email])
+      if !@otheruser.household_id == nil
+        flash[:notice2] = "User already has a household. They must leave their household first before joining yours."
+        redirect "/households/#{current_user.household.id}/manage"
+      else
+        redirect "/users/#{@otheruser.email}/addtohousehold"
+      end
+    else
+      flash[:notice2] = "User not found."
+      redirect "/households/#{current_user.household.id}/manage"
+    end
+  end
+
   get '/households/:id/manage' do #putting it here so that it does this instead of going to /households/:id
     if is_admin?
       @household = Household.find_by_id(params[:id])

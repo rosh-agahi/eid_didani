@@ -1,7 +1,7 @@
 # users
 # attributes: name, email, password, household_id
 
-User.create(name:"RollyRo Ag", email:"roly@r.co", password: "test")
+User.create(name:"Annie", email:"anni@r.co", password: "test")
 User.create(name:"Mom", email:"nilu@amco.co", password: "test")
 User.create(name:"Dad", email:"sooagi@g.co", password: "test")
 User.create(name:"Amo Fred", email:"farh@ag.co", password: "test", household_id: 2)
