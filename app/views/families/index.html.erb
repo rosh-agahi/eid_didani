@@ -1,0 +1,19 @@
+<h1>Families</h1>
+
+<p>List of all families</p>
+<p>Select a family join! Before scheduling Eid Didani visits, your household must be a part of the Family group to which the other households you wish to visit belong.</p>
+
+<p>
+  <a class="button" href="/families/new">Create New Family</a>
+</p>
+<ul>
+  <% Family.all.each do |f| %>
+    <li class="familyname">
+      <a class="button2" href="/families/<%= f.id %>/join">Join</a>
+      <%= f.name %>
+    </li>
+  <% end %>
+</ul>
+
+<%# class="join_btn" %>
+<%# <a  href="/families/<%= @f.id /join">Join</a>  %>

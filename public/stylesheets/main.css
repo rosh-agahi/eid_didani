@@ -17,6 +17,27 @@
     font-style: italic;
   }
 
+  .familyname {
+    color: blue;
+    font-family: Luminari;
+    margin: 15px;
+  }
+
+  .button {
+    color: white;
+    background-color: green;
+    padding: 10px;
+    text-decoration: none;
+  }
+
+  .button2 {
+    color: DarkOliveGreen;
+    font-family: serif;
+    background-color: AliceBlue;
+    padding: 5px;
+    text-decoration: none;
+  }
+
   #menu_bar {
     width: 100%
     display: flex;

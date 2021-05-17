@@ -13,6 +13,12 @@ class FamiliesController < ApplicationController
     erb :'families/new.html'
   end
 
+  get '/families/user/:id' do
+    @user = current_user
+    @families = "need to make the household : families membership table first."
+    erb :'families/myindex.html'
+  end
+
   post '/families' do
     @family = Family.new
     @family.name = params[:name]
@@ -25,8 +31,8 @@ class FamiliesController < ApplicationController
       #redirect to another form to update current users's household id.
       redirect "/families"
     else
-      flash[:notice] = "The Household was not created. Please try again."
-      redirect "/housholds/new"
+      flash[:notice] = "The Family Group was not created, please try again."
+      redirect "/families/new"
     end
 
   end
