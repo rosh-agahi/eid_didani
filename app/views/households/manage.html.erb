@@ -22,11 +22,13 @@
   </ul>
 <% end %>
 <br>
-<p> Add more availabilities</p>
+<p> Add more availabilities:</p>
   <form action="/availabilities" method="POST">
     <input type="datetime-local" name="datetime_local" />
     <input type="submit" value="Add" />
 </form>
+<br>
+<br>
 <br>
 
 
@@ -49,8 +51,9 @@
 <%= "<div class='notice'> #{flash[:notice]}</div>" if flash[:notice] %>
 
 <br>
+<br>
 
-<p> Add more household members </p>
+<p> Add more household members: </p>
 <form action="/households/<%= current_user.household_id %>/manage" method="post">
   <input type="text" name="email"><br>
   <input type="submit" value="Find User" /><%= "<div class='notice'> #{flash[:notice2]}</div>" if flash[:notice2] %>

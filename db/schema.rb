@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_16_004315) do
+ActiveRecord::Schema.define(version: 2021_05_17_035042) do
 
   create_table "availabilities", force: :cascade do |t|
     t.integer "household_id"
     t.datetime "available_date"
     t.boolean "available_status"
+  end
+
+  create_table "families", force: :cascade do |t|
+    t.string "name"
+    t.string "secret_join_code"
+    t.integer "admin_id"
   end
 
   create_table "households", force: :cascade do |t|

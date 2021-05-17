@@ -1,0 +1,16 @@
+<h1>Create a new Family Group!</h1>
+
+<form action="/families" method="POST">
+  <p>
+    <label for="name">Name:</label>
+    <input type="text" name="name">
+  </p>
+
+  <p>
+    <label for="secret_join_code">Secret Join Code:</label>
+    <input type="text" name="secret_join_code">
+  </p>
+  <input type="submit" value="Create!">
+
+  <%= "<div class='notice'> #{flash[:notice]}</div>" if flash[:notice] %>
+</form>
