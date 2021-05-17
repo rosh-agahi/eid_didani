@@ -20,7 +20,7 @@
 
       <div class="container">
         <%= "<div class='notice'> #{flash[:notice]}</div>" if flash[:notice] %>
-<!--
+
         <div id="menu_bar">
           <div id="menu_bar_left">
             <h1 align="left">Eid Didani!</h1>
@@ -28,15 +28,15 @@
 
           <div id="menu_bar_right">
             <nav>
-              <% if logged_in? && is_admin?%>
-              Logged in as: <%= current_user.email %> | <a href="/logout">Logout</a> | <a href="/household/<%= current_user.household.id %>/manage">Manage Household</a>
+              <% if logged_in? %>
+              Logged in as: <%= current_user.email %> | <a href="/logout">Logout</a> 
               <% else %>
               <a href="/register">Register</a> | <a href="/login">Login</a> | <a href="/">Home</a>
               <% end %>
             </nav>
           </div>
         </div>
-//-->
+
       </div>
 
 

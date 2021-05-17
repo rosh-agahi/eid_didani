@@ -6,7 +6,6 @@
 <p>button to delete household</p>
 <p>button to change address</p>
 
-<p>column 1</p>
 <h3>Manage Availabilities</h3>
 <% if @availabilities.count < 1 %>
   <p>Start by adding availabilities</p>
@@ -22,13 +21,14 @@
     <% end %>
   </ul>
 <% end %>
-
-
-<p>form: add availability <br>
-inputs: date, time, timezone (defaults to current time zone)</p>
-
-<p>column 2</p>
-<h3>Manage Users</h3>
+<br>
+<p> Add more availabilities</p>
+  <form action="/availabilities" method="POST">
+    <input type="datetime-local" name="datetime_local" />
+    <input type="submit" value="Add" />
+</form>
+<br>
+<h3>Household Members</h3>
 <p>also want to delete each user with a button next to their name, right aligned</p>
 <ul>
   <% @users.each do |user| %>
@@ -36,6 +36,12 @@ inputs: date, time, timezone (defaults to current time zone)</p>
   <% end %>
 </ul>
 
-<p>form: add user, input: email address<br>
-error message if user not exist<br>
-button to add user</p>
+<br>
+<p> Add more household members </p>
+<form action="/adduser/<%=  %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input type="text" name="email">
+  <input type="hidden" name="household_id" value="<%= @household.id %>">
+  <input type="submit" value="Add Household Member" />
+</form>
+<%= "<div class='notice'> #{flash[:notice]}</div>" if flash[:notice] %>
