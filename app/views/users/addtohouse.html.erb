@@ -4,6 +4,6 @@
 
 <form action="/confirm_add/<%= @otheruser.id %>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <input type="text" name="household_id" value="<%= current_user.household_id %>">
+  <input type="hidden" name="household_id" value="<%= current_user.household_id %>">
   <input type="submit" value="Confirm">
 </form>

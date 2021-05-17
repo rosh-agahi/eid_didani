@@ -36,17 +36,20 @@
 <ul>
   <% @users.each do |u| %>
   <li>
-    <form action:"/user/remove/<%= u.id %>" method="post">
+    <form action="/users/<%= u.id %>/removefromhouse" method="post">
       <input type="hidden" name="_method" value="PATCH">
       <input type="hidden" name="household_id" value="nil">
       <input type="submit" value="Remove">
       <%= u.name %>
-</form></li>
+    </form>
+  </li>
   <% end %>
 </ul>
-<br>
+
 <%= "<div class='notice'> #{flash[:notice]}</div>" if flash[:notice] %>
+
 <br>
+
 <p> Add more household members </p>
 <form action="/households/<%= current_user.household_id %>/manage" method="post">
   <input type="text" name="email"><br>

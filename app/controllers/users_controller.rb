@@ -69,26 +69,11 @@ class UsersController < ApplicationController
     redirect "/households/#{current_user.household.id}/manage"
   end
 
-  patch '/users/remove/:id' do
-    @otheruser.User.find_by_id(params[:id])
+  patch '/users/:id/removefromhouse' do
+    @otheruser = User.find_by_id(params[:id])
     @otheruser.update(household_id: nil)
     flash[:notice] ="#{@otheruser.name} was removed"
-    # @user = current_user
-    # redirect "/households/#{@user.household.id}/manage"
-  end
-
-  patch '/adduser/:email' do
-    if !!User.find_by(email: params[:email])
-      @otheruser = User.find_by(email: params[:email])
-      if @otheruser.household_id != nil
-        flash[:notice] = "The user already belongs to another household."
-      else
-        @otheruser.update(household_id: current_user.household_id)
-      end
-      redirect "/households/#{@user.household.id}/manage"
-    else
-      flash[:notice] = "The user does not exist."
-    end
+    redirect "/households/#{current_user.household.id}/manage"
   end
 
   get '/users/:id/edit' do
