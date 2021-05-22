@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_035042) do
+ActiveRecord::Schema.define(version: 2021_05_22_161508) do
 
   create_table "availabilities", force: :cascade do |t|
     t.integer "household_id"
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 2021_05_17_035042) do
     t.string "name"
     t.string "address"
     t.integer "admin_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "household_id"
+    t.integer "family_id"
   end
 
   create_table "users", force: :cascade do |t|
