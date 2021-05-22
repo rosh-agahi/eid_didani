@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_161508) do
+ActiveRecord::Schema.define(version: 2021_05_22_225524) do
 
   create_table "availabilities", force: :cascade do |t|
     t.integer "household_id"
@@ -40,6 +40,12 @@ ActiveRecord::Schema.define(version: 2021_05_22_161508) do
     t.string "password_digest"
     t.string "name"
     t.integer "household_id"
+  end
+
+  create_table "visits", force: :cascade do |t|
+    t.integer "host_household_id"
+    t.integer "guest_household_id"
+    t.datetime "visit_date"
   end
 
 end
