@@ -27,3 +27,5 @@ Availability.create(household_id: 3, available_date: "2022-03-22 02:00:00 UTC", 
 # families
 # attributes: name,
 # Family.create()
+
+# visits 

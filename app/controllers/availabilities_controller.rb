@@ -30,4 +30,8 @@ class AvailabilitiesController < ApplicationController
     end
   end
 
+  get '/schedule' do
+    erb :'availabilities/show.html'
+  end
+
 end

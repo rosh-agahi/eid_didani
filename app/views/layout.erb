@@ -29,7 +29,7 @@
           <div id="menu_bar_right">
             <nav>
               <% if logged_in? %>
-              Logged in as: <%= current_user.email %> | <a href="/logout">Logout</a> 
+              Logged in as: <%= current_user.email %> | <a href="/logout">Logout</a>  | <a href="/families">Families</a> | <a href="/schedule">Schedule</a>
               <% else %>
               <a href="/register">Register</a> | <a href="/login">Login</a> | <a href="/">Home</a>
               <% end %>

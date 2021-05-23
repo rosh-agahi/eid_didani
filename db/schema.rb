@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_225524) do
+ActiveRecord::Schema.define(version: 2021_05_23_005406) do
 
   create_table "availabilities", force: :cascade do |t|
     t.integer "household_id"
     t.datetime "available_date"
     t.boolean "available_status"
+    t.integer "other_household_id"
+    t.string "role"
   end
 
   create_table "families", force: :cascade do |t|
@@ -40,12 +42,6 @@ ActiveRecord::Schema.define(version: 2021_05_22_225524) do
     t.string "password_digest"
     t.string "name"
     t.integer "household_id"
-  end
-
-  create_table "visits", force: :cascade do |t|
-    t.integer "host_household_id"
-    t.integer "guest_household_id"
-    t.datetime "visit_date"
   end
 
 end
