@@ -1,0 +1,132 @@
+h1.name {
+  font-family: Luminari;
+}
+
+img.headerimage {
+  max-width: 50%;
+  max-height: 200px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 60px;
+  padding-right: 40px;
+}
+
+.logobox {
+  background-color: #f2f2f2;
+  top: 0;
+  left: 0;
+}
+
+.menu_bar{
+  background-color: #f8f8f8;
+  align-items: center;
+}
+
+nav.menu_bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+div.menu_items {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-family: Gill Sans;
+}
+
+a.menu {
+  color: #000000;
+  text-decoration: none;
+  font-size: 12px;
+  text-transform:uppercase;
+}
+
+.notice {
+  background-color: #f6f6f6;
+  justify-content: center;
+  color: #DarkOliveGreen;
+}
+
+.spacer {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+footer {
+  background-color: #f2f2f2;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Gill Sans;
+}
+
+.body {
+  margin-top: 25%;
+  margin-bottom: 100px;
+  padding: 0% 20% 0% 20%;
+}
+
+h2 {
+  border-bottom: 2px solid #ccc;
+  font-size: 24px;
+  font-family: 'Schoolbell', sans-serif;
+  line-height: 36px;
+  margin-bottom: 16px;
+}
+
+p {
+  color: #544840;
+  line-height: 16px;
+}
+
+.centered {
+  justify-content: center;
+  text-align: center;
+}
+
+label {
+  line-height: 25px;
+}
+
+.button1 {
+  border: 2px solid #4CAF50; /* Green */
+  background-color: white;
+  color: black;
+  padding: 10px 100px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Gill Sans';
+  text-transform: uppercase;
+}
+
+input, text {
+  font:'Gill Sans', sans-serif;
+  border: none;
+  padding: 10px 10px;
+  margin: 0;
+  width: 80%;
+  background: #f8f8f8;
+}
