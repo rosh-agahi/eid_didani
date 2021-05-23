@@ -1,0 +1,9 @@
+<h2><%= @family.name %></h2>
+
+<p>Select a household to see their availabilities for an Eid Didani:</p>
+
+<ul>
+  <% @family.households.each do |h| %>
+    <li><a href="/households/<%= h.id %>" ><%= h.name %></a></li>
+  <% end %>
+</ul>

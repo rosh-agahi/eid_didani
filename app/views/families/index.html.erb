@@ -9,7 +9,7 @@
 <table>
   <% Family.all.each do |f| %>
     <tr>
-      <td class="familyname"><%= f.name %></td>
+      <td><p class="familyname"><a href="/families/<%= f.id %>"><%= f.name %></a></p></td>
       <td><% if !f.memberships.find_by(household_id: current_user.household.id) %>
         <a class="button2" href="/families/<%= f.id %>/join">Join</a>
       <% end %></td>

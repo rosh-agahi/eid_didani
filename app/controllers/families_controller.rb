@@ -61,8 +61,12 @@ class FamiliesController < ApplicationController
   end
 
   get '/families/:id' do
-    #check if user is in the family first!
     @family = Family.find_by_id(params[:id])
-
+    if !!@family.memberships.find_by(household_id: current_user.household.id)
+      erb :'families/show.html'
+    else
+      flash[:notice] = "You must join the family using their secret join code before you can see their page."
+      redirect '/families'
+    end
   end
 end
