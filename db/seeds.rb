@@ -21,11 +21,11 @@ Household.create(name:"Anna in Playa", address:"1145 BeachCove Dr, Playa, CA", a
 #
 Availability.create(household_id: 2, available_date: "2022-03-22 01:00:00 UTC", available_status: true)
 Availability.create(household_id: 2, available_date: "2022-03-22 03:00:00 UTC", available_status: true)
-Availability.create(household_id: 3, available_date: "2022-03-22 01:00:00 UTC", available_status: true)
+Availability.create(household_id: 3, available_date: "2022-03-22 14:00:00 UTC", available_status: true)
 Availability.create(household_id: 3, available_date: "2022-03-22 02:00:00 UTC", available_status: true)
 
 # families
 # attributes: name,
 # Family.create()
 
-# visits 
+# visits

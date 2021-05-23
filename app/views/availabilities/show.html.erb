@@ -7,8 +7,14 @@
     <th>Date and Time</th>
     <th>Location</th>
   </tr>
-
-
+  <% current_user.household.availabilities.each do |a| %>
+    <% if a.available_status == false %>
+      <tr>
+        <td><%= a.role %></td>
+        <td><%= Household.find_by_id(a.other_household_id).name %></td>
+        <td><%= a.available_date %></td>
+        <td><%= a.role == "Host" ? ("Home") : (Household.find_by_id(a.other_household_id).address) %></td>
+      </tr>
+    <% end %>
+  <% end %>
 </table>
-<% Availability.all.each do |v| %>
-<h3>Visiting:</h3>

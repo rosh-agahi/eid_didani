@@ -3,9 +3,24 @@
 <% if @availabilities.count < 1 %>
   <p>This household has not yet set up any available times. Please check back soon.</p>
 <% else %>
-  <ul>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Book it!</th>
+    </tr>
     <% @availabilities.each do |a| %>
-    <li><%= "Date: #{a.available_date} Status: #{a.available_status}" %></li>
+    <tr>
+      <td><%= display_availability(a.available_date) %></td>
+      <td><%= a.available_status ? ("Available") : ("Booked") %></td>
+      <td>
+        <form action="/availabilities/<%= a.id %>/book" method="post">
+          <input id="hidden" type="hidden" name="_method" value="patch">
+          <input type="hidden" name="other_household_id" value="<%= current_user.household.id %>">
+          <input type="submit" value="Book" />
+        </form>
+      </td>
+    </tr>
     <% end %>
-  </ul>
+  </table>
 <% end %>
