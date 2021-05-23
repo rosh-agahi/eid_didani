@@ -6,14 +6,13 @@
 <p>
   <a class="button" href="/families/new">Create New Family</a>
 </p>
-<ul>
+<table>
   <% Family.all.each do |f| %>
-    <li class="familyname">
-      <a class="button2" href="/families/<%= f.id %>/join">Join</a>
-      <%= f.name %>
-    </li>
+    <tr>
+      <td class="familyname"><%= f.name %></td>
+      <td><% if !f.memberships.find_by(household_id: current_user.household.id) %>
+        <a class="button2" href="/families/<%= f.id %>/join">Join</a>
+      <% end %></td>
+    </tr>
   <% end %>
-</ul>
-
-<%# class="join_btn" %>
-<%# <a  href="/families/<%= @f.id /join">Join</a>  %>
+</table>

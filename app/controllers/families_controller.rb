@@ -13,11 +13,34 @@ class FamiliesController < ApplicationController
     erb :'families/new.html'
   end
 
+  get '/families/:id/join' do
+    @family = Family.find_by_id(params[:id])
+    erb :'families/join.html'
+  end
+
   get '/families/user/:id' do
     @user = current_user
     @families = "need to make the household : families membership table first."
     erb :'families/myindex.html'
   end
+
+  post '/families/:id/join' do
+    @family = Family.find_by_id(params[:id])
+    @user_input = params[:secret_join_code]
+
+    if @user_input = @family.secret_join_code
+      Membership.create(
+        household_id: current_user.household_id,
+        family_id: @family.id
+      )
+      flash[:notice] = "You have joined the #{@family.name} family!"
+      redirect '/families'
+    else
+      flash[:notice] = "The secret join code you entered was incorrect."
+      redirect "/families/#{@family.id}/join"
+    end
+  end
+
 
   post '/families' do
     @family = Family.new
@@ -37,4 +60,9 @@ class FamiliesController < ApplicationController
 
   end
 
+  get '/families/:id' do
+    #check if user is in the family first!
+    @family = Family.find_by_id(params[:id])
+
+  end
 end
