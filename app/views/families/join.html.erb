@@ -1,14 +1,16 @@
 <h2>Join the Fam!</h2>
 <h3>Family: <%= @family.name %></h3>
 
-<form action='/families/<%= @family.id %>/join' method="POST">
+<div class="centered">
+  <form action='/families/<%= @family.id %>/join' method="POST">
 
-  <input type="hidden" name="family_id" value="<%= @family.id %>">
+    <input type="hidden" name="family_id" value="<%= @family.id %>">
+    <p>
+      <label for="secret_join_code">Please enter the Family's secret join code:</label>
+      <input type="text" name="secret_join_code" />
+    </p>
 
-  <p>
-    <label for="secret_join_code">Please enter the Family's secret join code:</label>
-    <input type="text" name="secret_join_code" />
-  </p>
+    <input class="button1" type="submit" value="Join" />
 
-  <input type="submit" value="Confirm & Join" />
-</form>
+  </form>
+</div>

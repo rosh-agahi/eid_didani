@@ -17,7 +17,9 @@
         <form action="/availabilities/<%= a.id %>/book" method="post">
           <input id="hidden" type="hidden" name="_method" value="patch">
           <input type="hidden" name="other_household_id" value="<%= current_user.household.id %>">
-          <input type="submit" value="Book" />
+          <% if a.available_status %>
+            <input class="button2" type="submit" value="Book" />
+          <% end %>
         </form>
       </td>
     </tr>

@@ -18,7 +18,7 @@ class FamiliesController < ApplicationController
     erb :'families/join.html'
   end
 
-  get '/families/user/:id' do
+  get '/families/myfamilies' do
     @user = current_user
     @families = "need to make the household : families membership table first."
     erb :'families/myindex.html'
@@ -33,10 +33,10 @@ class FamiliesController < ApplicationController
         household_id: current_user.household_id,
         family_id: @family.id
       )
-      flash[:notice] = "You have joined the #{@family.name} family!"
+      flash[:notice_green] = "You have joined the #{@family.name} family!"
       redirect '/families'
     else
-      flash[:notice] = "The secret join code you entered was incorrect."
+      flash[:notice_red] = "The secret join code you entered was incorrect."
       redirect "/families/#{@family.id}/join"
     end
   end
@@ -54,7 +54,7 @@ class FamiliesController < ApplicationController
       #redirect to another form to update current users's household id.
       redirect "/families"
     else
-      flash[:notice] = "The Family Group was not created, please try again."
+      flash[:notice_red] = "The Family Group was not created, please try again."
       redirect "/families/new"
     end
 
@@ -65,7 +65,7 @@ class FamiliesController < ApplicationController
     if !!@family.memberships.find_by(household_id: current_user.household.id)
       erb :'families/show.html'
     else
-      flash[:notice] = "You must join the family using their secret join code before you can see their page."
+      flash[:notice_red] = "You must join the family using their secret join code before you can see their page."
       redirect '/families'
     end
   end

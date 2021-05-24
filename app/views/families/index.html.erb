@@ -1,18 +1,23 @@
-<h1>Families</h1>
+
+<div class="container">
+  <a class="filledbutton" href="/families/new">Create New Family</a>
+  <a class="filledbutton" href="/families/myfamilies">My Families</a>
+</div>
+
+
+<h2>Families</h2>
 
 <p>List of all families</p>
 <p>Select a family join! Before scheduling Eid Didani visits, your household must be a part of the Family group to which the other households you wish to visit belong.</p>
 
-<p>
-  <a class="button" href="/families/new">Create New Family</a>
-</p>
+
 <table>
   <% Family.all.each do |f| %>
     <tr>
-      <td><p class="familyname"><a href="/families/<%= f.id %>"><%= f.name %></a></p></td>
       <td><% if !f.memberships.find_by(household_id: current_user.household.id) %>
-        <a class="button2" href="/families/<%= f.id %>/join">Join</a>
+        <a class="join" href="/families/<%= f.id %>/join">Join</a>
       <% end %></td>
+      <td><a class="familyname" href="/families/<%= f.id %>"><%= f.name %></a></td>
     </tr>
   <% end %>
 </table>

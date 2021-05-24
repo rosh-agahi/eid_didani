@@ -1,38 +1,44 @@
 <h2 align="left"> <%= @household.name %></h2>
 
- <h3>Admin: <%= current_user.name %></h3>
-
-<p>button to go to appointment calendar</p>
-<p>button to delete household</p>
-<p>button to change address</p>
+<p>Admin: <%= current_user.name %></p>
 
 <h3>Manage Availabilities</h3>
-<% if @availabilities.count < 1 %>
-  <p>Start by adding availabilities</p>
-<% else %>
-  <ul>
-    <% @availabilities.each do |a| %>
-    <li>
-      <form action="/availabilities/<%= a.id %>" method="post">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete">
-        <%= "#{display_availability(a.available_date)}  " %><p class="status"><%= a.available_status ? ("Available"):("Booked") %></p>
-      </form></li>
-    <% end %>
-  </ul>
-<% end %>
-<br>
-<p> Add more availabilities:</p>
-  <form action="/availabilities" method="POST">
-    <input type="datetime-local" name="datetime_local" />
-    <input type="submit" value="Add" />
-</form>
-<br>
-<br>
-<br>
 
+<div class="container2">
+  <div class="manage1">
+  <% if @availabilities.count < 1 %>
+    <p>Start by adding availabilities</p>
+  <% else %>
+    <table>
+      <% @availabilities.each do |a| %>
+      <tr>
+        <td>
+          <% if a.available_status %>
+            <form action="/availabilities/<%= a.id %>" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              <input class="deletebutton" type="submit" value="Delete">
+            </form>
+          <% end %>
+        </td>
+        <td><%= "#{display_availability(a.available_date)}  " %></td>
+        <td><%= a.available_status ? ("Available"):("Booked") %></td>
+      </tr>
+      <% end %>
+    </table>
+  <% end %>
+  </div>
 
+  <div class="manage2">
+    <h4> Add more availabilities:</h4>
+      <form action="/availabilities" method="POST">
+        <input type="datetime-local" name="datetime_local" />
+        <input class="button1" type="submit" value="Add" />
+      </form>
+  </div>
+</div>
 
+<br>
+<br>
 
 <h3>Household Members</h3>
 <ul>
@@ -41,7 +47,7 @@
     <form action="/users/<%= u.id %>/removefromhouse" method="post">
       <input type="hidden" name="_method" value="PATCH">
       <input type="hidden" name="household_id" value="nil">
-      <input type="submit" value="Remove">
+      <input class="deletebutton" type="submit" value="Remove">
       <%= u.name %>
     </form>
   </li>

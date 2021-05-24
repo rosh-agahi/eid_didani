@@ -1,25 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Open+Sans&display=swap');
+
 h1.name {
-  font-family: Luminari;
+  font-family: 'Kaushan Script';
+  font-size: 50px;
 }
 
 img.headerimage {
-  max-width: 50%;
-  max-height: 200px;
+  max-width: 70%;
+  max-height: 180px;
 }
 
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding-left: 60px;
-  padding-right: 40px;
+}
+
+.container2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
 .logobox {
   background-color: #f2f2f2;
   top: 0;
   left: 0;
+  padding: 2% 20%;
 }
 
 .menu_bar{
@@ -31,15 +40,14 @@ nav.menu_bar {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
+  padding: 5px 20%;
 }
 
 div.menu_items {
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  font-family: Gill Sans;
+  font-family: 'Open Sans';
+  padding-right: 3%;
+  letter-spacing: 2px;
 }
 
 a.menu {
@@ -49,16 +57,41 @@ a.menu {
   text-transform:uppercase;
 }
 
-.notice {
-  background-color: #f6f6f6;
-  justify-content: center;
-  color: #DarkOliveGreen;
+.welcome {
+  width: 38%;
+  background: #f8f8f8;
+  height: 250px;
+  padding: 5%;
 }
 
-.spacer {
-  padding-left: 20px;
-  padding-right: 20px;
+a.join{
+  border: 2px solid #4CAF50; /* Green */
+  background-color: white;
+  color: black;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 12px;
+  font-family: 'Gill Sans';
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: 2px;
 }
+
+.top_notice_red {
+  background-color: #FFEBCD;
+  justify-content: center;
+  padding: 5px 11%;
+  color: red;
+}
+
+.top_notice_green {
+  background-color: #FFEBCD;
+  justify-content: center;
+  padding: 5px 11%;
+  color: green;
+}
+
 
 header {
   position: fixed;
@@ -66,6 +99,7 @@ header {
   left: 0;
   width: 100%;
 }
+
 footer {
   background-color: #f2f2f2;
   position: fixed;
@@ -78,7 +112,7 @@ footer {
 body {
   padding: 0;
   margin: 0;
-  font-family: Gill Sans;
+  font-family: 'Open Sans';
 }
 
 .body {
@@ -90,13 +124,14 @@ body {
 h2 {
   border-bottom: 2px solid #ccc;
   font-size: 24px;
-  font-family: 'Schoolbell', sans-serif;
+  font-family: 'Kaushan Script';
   line-height: 36px;
   margin-bottom: 16px;
 }
 
 p {
   color: #544840;
+  font-size: 12px;
   line-height: 16px;
 }
 
@@ -120,6 +155,21 @@ label {
   font-weight: bold;
   font-family: 'Gill Sans';
   text-transform: uppercase;
+  letter-spacing: 2px;
+
+}
+
+.button2 {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 8px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Gill Sans';
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
 }
 
 input, text {
@@ -129,4 +179,72 @@ input, text {
   margin: 0;
   width: 80%;
   background: #f8f8f8;
+}
+
+h1 {
+  font-family: Luminari, fantasy;
+}
+
+td {
+  padding: 5px;
+  font-size: 12px;
+}
+
+th {
+  text-align: left;
+  padding-right: 15px;
+}
+
+a.familyname {
+  color: #000000;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+a.filledbutton {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 0px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Gill Sans';
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  width: 48%
+}
+
+ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+.deletebutton {
+  border: 2px solid red; /* Green */
+  background-color: white;
+  color: black;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Gill Sans';
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  width: 100px;
+}
+
+.manage1 {
+  width: 55%;
+  background: #f8f8f8;
+  padding: 10px;
+}
+
+.manage2 {
+  width: 35%;
+  background: #f8f8f8;
+  padding: 10px;
+  align-items: center;
 }

@@ -6,18 +6,21 @@
 
 <header>
   <div class="container logobox">
-    <h1 class="name">Eid Didani!</h1>
-    <div class="spacer"> </div>
+    <h1 class="name" vertical-align="middle">Eid Didani!</h1>
     <img class="headerimage" src="/images/EidDidaniHaftSeen.png">
   </div>
 
   <div class="menu_bar">
     <nav class="menu_bar">
       <% if logged_in? %>
-        <div class="menu_items"> Logged in as: <%= current_user.email %> </div>
-        <div class="menu_items"> <a class="menu" href="/logout">    Logout    </a> </div>
+          <% if is_admin? %>
+          <div class="menu_items"> <a class="menu" href="/households/<%= current_user.household.id %>/manage">    Household    </a> </div>
+          <% else %>
+          <div class="menu_items"> <a class="menu" href="/households/<%= current_user.household.id %>">    Household    </a> </div>
+          <% end %>
         <div class="menu_items"> <a class="menu" href="/families">  Families  </a> </div>
         <div class="menu_items"> <a class="menu" href="/schedule">  Schedule  </a> </div>
+        <div class="menu_items"> <a class="menu" href="/logout">    Logout    </a> </div>
       <% else %>
         <div class="menu_items"> <a class="menu" href="/register">    Register    </a> </div>
         <div class="menu_items"> <a class="menu" href="/login">       Login       </a> </div>
@@ -26,9 +29,9 @@
     </nav>
 </div>
 
-<div class="notice">
-  <%= "<div class='notice'> #{flash[:notice]}</div>" if flash[:notice] %>
-</div>
+<%= "<div class='top_notice_red'> #{flash[:notice_red]}</div>" if flash[:notice_red] %>
+<%= "<div class='top_notice_green'> #{flash[:notice_green]}</div>" if flash[:notice_green] %>
+
 </header>
 
 <div class="body">

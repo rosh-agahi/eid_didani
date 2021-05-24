@@ -13,6 +13,7 @@ class AvailabilitiesController < ApplicationController
 
     if @availability.save
       if is_admin?
+        flash[:notice_green]="Availability added"
         redirect "/households/#{@user.household.id}/manage"
       else
         redirect "/households/#{@user.household.id}"
@@ -42,7 +43,8 @@ class AvailabilitiesController < ApplicationController
       )
     end
 
-    flash[:notice] = "Eid Didani was booked with #{@host_availability.household.name}."
+
+    flash[:notice_green] = "Eid Didani was booked with #{@host_availability.household.name}."
     redirect '/families'
   end
 

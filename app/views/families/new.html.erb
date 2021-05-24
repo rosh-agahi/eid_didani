@@ -2,15 +2,15 @@
 
 <form action="/families" method="POST">
   <p>
-    <label for="name">Name:</label>
+    <label for="name">Family Name</label><br>
     <input type="text" name="name">
   </p>
 
   <p>
-    <label for="secret_join_code">Secret Join Code:</label>
+    <label for="secret_join_code">Secret Join Code</label><br>
     <input type="text" name="secret_join_code">
   </p>
-  <input type="submit" value="Create!">
+  <input class="button1" type="submit" value="Create">
 
   <%= "<div class='notice'> #{flash[:notice]}</div>" if flash[:notice] %>
 </form>
