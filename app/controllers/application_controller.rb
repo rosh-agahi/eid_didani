@@ -28,7 +28,11 @@ class ApplicationController < Sinatra::Base
     end
 
     def is_admin? #checks if the current_user is admin for the household. required for manage household.
-      current_user.id == current_user.household.admin_id
+      if current_user.household_id == nil
+        false
+      else
+        current_user.id == current_user.household.admin_id
+      end 
     end
 
     def authentication_required

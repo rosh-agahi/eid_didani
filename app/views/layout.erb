@@ -14,13 +14,12 @@
     <nav class="menu_bar">
       <% if logged_in? %>
           <% if is_admin? %>
-          <div class="menu_items"> <a class="menu" href="/households/<%= current_user.household.id %>/manage">    Household    </a> </div>
-          <% else %>
-          <div class="menu_items"> <a class="menu" href="/households/<%= current_user.household.id %>">    Household    </a> </div>
+            <div class="menu_items"> <a class="menu" href="/households/<%= current_user.household.id %>/manage">    Household    </a> </div>
           <% end %>
-        <div class="menu_items"> <a class="menu" href="/families">  Families  </a> </div>
-        <div class="menu_items"> <a class="menu" href="/schedule">  Schedule  </a> </div>
-        <div class="menu_items"> <a class="menu" href="/logout">    Logout    </a> </div>
+        <div class="menu_items"> <a class="menu" href="/households/new">    Create a Household  </a> </div>
+        <div class="menu_items"> <a class="menu" href="/families">          Families            </a> </div>
+        <div class="menu_items"> <a class="menu" href="/schedule">          Schedule            </a> </div>
+        <div class="menu_items"> <a class="menu" href="/logout">            Logout              </a> </div>
       <% else %>
         <div class="menu_items"> <a class="menu" href="/register">    Register    </a> </div>
         <div class="menu_items"> <a class="menu" href="/login">       Login       </a> </div>
