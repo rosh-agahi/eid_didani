@@ -79,19 +79,28 @@ a.join{
 }
 
 .top_notice_red {
-  background-color: #FFEBCD;
-  justify-content: center;
-  padding: 5px 11%;
+  background-color: #fde5e4;
+  text-align: center;
+  padding: 5px 20%;
+  font-style:italic;
   color: red;
 }
 
 .top_notice_green {
-  background-color: #FFEBCD;
-  justify-content: center;
-  padding: 5px 11%;
+  background-color: #c9fce8;
+  text-align: center;
+  padding: 5px 20%;
+  font-style:italic;
   color: green;
 }
 
+.notice {
+  background-color: #fde5e4;
+  text-align: center;
+  padding: 5px 20%;
+  font-style:italic;
+  color: red;
+}
 
 header {
   position: fixed;
@@ -182,7 +191,7 @@ input, text {
 }
 
 h1 {
-  font-family: Luminari, fantasy;
+  font-family: 'Kaushan Script';
 }
 
 td {

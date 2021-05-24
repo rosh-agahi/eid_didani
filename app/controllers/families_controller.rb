@@ -51,7 +51,11 @@ class FamiliesController < ApplicationController
     # users have a one to many relationship but one user has admin rights to a household.
 
     if @family.save
-      #redirect to another form to update current users's household id.
+      Membership.create(
+        household_id: current_user.household.id,
+        family_id: @family.id
+      )
+      flash[:notice_green] = "The Family Group: #{@family.name} was created and you are the admin."
       redirect "/families"
     else
       flash[:notice_red] = "The Family Group was not created, please try again."
